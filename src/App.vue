@@ -1,16 +1,37 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    
+    <Header @toggle-add-task="toggleAddTask" title="Task tracker"
+    :showAddTask="showAddTask"
+    />
+    
+    <router-view :showAddTask="showAddTask"/>
+    <Footer />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Header from './components/Header'
+import Footer from './components/Footer.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Header,
+    Footer
+  },
+  data() {
+    return{
+      showAddTask: false,
+    }
+  },
+  methods: {
+ 
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask
+    },
+    
+  },
+  
 }
 </script>
 
@@ -22,5 +43,14 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  width: 400px;
+  
+  height: 500px;
 }
+#container {
+ border: 1px solid black;
+ 
+}
+
+
 </style>
